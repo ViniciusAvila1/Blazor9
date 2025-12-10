@@ -1,0 +1,31 @@
+﻿@page "/"
+@rendermode InteractiveServer 
+
+<PageTitle>Home</PageTitle>
+
+<h1>@Message</h1>
+
+Bem vindo ao nosso sistema
+
+<ul>
+<li>Franca-SP</li>
+<li>Ribeirão Preto-SP</li>
+</ul>
+
+<button class="btn btn-primary">Clique aqui</button>
+
+<style>
+li {
+    background-color: maroon;
+ color: white;
+ padding: 10px;
+}
+</style>
+
+@* @code é o código em C#*@
+
+@code {
+
+    public string Message = "Olá alunos da Fatec Franca!" ;
+
+}
