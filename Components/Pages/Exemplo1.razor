@@ -11,7 +11,7 @@
 
         <div class="col-md-4">
             <label for="nomeInput" class="form-label">Nome:</label>
-            <input type="text" class="form-control" id="nomeInput" placeholder="Digite seu nome" />
+            <input type="text" @bind-value="xNome" class="form-control" id="nomeInput" placeholder="Digite seu nome" />
         </div>
 
         <div class="col-md-4">
@@ -40,7 +40,7 @@
 
         <div class="col-md-4">
             <label for="CEPInput" class="form-label">Cep:</label>
-            <input type="text" class="form-control" id="cepInput" placeholder="Digite seu CEP" />
+            <input type="text" @bind-value="xCep" class="form-control" id="cepInput" placeholder="Digite seu CEP" />
         </div>
     </div>
 
@@ -61,11 +61,26 @@
     }
 </style>
 
+@* @code é o codigo C#*@
 @code {
 
     private string Titulo = "Formulário de Exemplo";
+    private string? xNome;
+    private string? xCep;
     private void Enviar()
     {
+        if (string.IsNullOrEmpty(xNome))
+        {
+            Titulo = "Por favor, preencha o campo Nome.";
+            return; //no return encerra o método
+        }
+
+        if (string.IsNullOrEmpty(xCep))
+        {
+            Titulo = "Por favor, preencha o campo CEP.";
+            return;
+        }
+
         Titulo = "Formulário Enviado!";
     }
 }
