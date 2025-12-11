@@ -1,0 +1,71 @@
+@* @page implementa a rota *@
+@page "/exemplo1"
+@rendermode InteractiveServer
+
+<PageTitle>Exemplo1</PageTitle>
+<h1>@Titulo</h1>
+<p>Este é um exemplo de página adicional.</p>
+
+<form>
+    <div class="row">
+
+        <div class="col-md-4">
+            <label for="nomeInput" class="form-label">Nome:</label>
+            <input type="text" class="form-control" id="nomeInput" placeholder="Digite seu nome" />
+        </div>
+
+        <div class="col-md-4">
+            <label for="enderecoInput" class="form-label">Endereço:</label>
+            <input type="text" class="form-control" id="enderecoInput" placeholder="Digite seu Endereço" />
+        </div>
+
+        <div class="col-md-4">
+            <label for="emailInput" class="form-label">Email:</label>
+            <input type="email" class="form-control" id="emailInput" placeholder="Digite seu Email" />
+        </div>
+
+    </div>
+
+    <div class="row">
+
+        <div class="col-md-4">
+            <label for="telefoneInput" class="form-label">Telefone:</label>
+            <input type="tel" class="form-control" id="telefoneInput" placeholder="Digite seu Telefone" />
+        </div>
+
+        <div class="col-md-4">
+            <label for="cidadeInput" class="form-label">Cidade:</label>
+            <input type="text" class="form-control" id="cidadeInput" placeholder="Digite sua Cidade" />
+        </div>
+
+        <div class="col-md-4">
+            <label for="CEPInput" class="form-label">Cep:</label>
+            <input type="text" class="form-control" id="cepInput" placeholder="Digite seu CEP" />
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-2">
+            <button @onclick="Enviar" type="button" class="btn btn-primary">Enviar</button>
+        </div>
+        <div class="col-md-2">
+            <button type="reset" class="btn btn-secondary">Limpar</button>
+        </div>
+    </div>
+</form>
+
+<style>
+    .form-control {
+        margin-bottom: 15px;
+        border: 2px solid blue;
+    }
+</style>
+
+@code {
+
+    private string Titulo = "Formulário de Exemplo";
+    private void Enviar()
+    {
+        Titulo = "Formulário Enviado!";
+    }
+}

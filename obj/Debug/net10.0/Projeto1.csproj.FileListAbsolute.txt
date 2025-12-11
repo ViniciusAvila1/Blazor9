@@ -83,3 +83,4 @@ C:\Fatec\Laboratório-de-Desenvolvimento-de-Dispositivos-Móveis-5DSM\blazor9\Pr
 C:\Fatec\Laboratório-de-Desenvolvimento-de-Dispositivos-Móveis-5DSM\blazor9\Projeto1\obj\Debug\net10.0\Projeto1.pdb
 C:\Fatec\Laboratório-de-Desenvolvimento-de-Dispositivos-Móveis-5DSM\blazor9\Projeto1\obj\Debug\net10.0\Projeto1.genruntimeconfig.cache
 C:\Fatec\Laboratório-de-Desenvolvimento-de-Dispositivos-Móveis-5DSM\blazor9\Projeto1\obj\Debug\net10.0\ref\Projeto1.dll
+C:\Fatec\Laboratório-de-Desenvolvimento-de-Dispositivos-Móveis-5DSM\blazor9\Projeto1\obj\Debug\net10.0\Projeto1.sourcelink.json
