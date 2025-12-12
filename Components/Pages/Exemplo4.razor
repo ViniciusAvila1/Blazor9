@@ -1,0 +1,23 @@
+@page "/exemplo4"
+
+
+<h3>Exemplo 4: Importando Classes</h3>
+
+@pf.Nome - CPF: @pf.CPF<br />
+@pj.Nome - CNPJ: @pj.CNPJ
+
+@code {
+    private PessoaFisica pf = new PessoaFisica();
+    private PessoaJuridica pj = new PessoaJuridica();
+
+    protected override void OnInitialized()
+    {
+        pf.Id = 1;
+        pf.Nome = "Ana Paula";
+        pf.CPF = "123.456.789-00";
+
+        pj.Id = 2;
+        pj.Nome = "Empresa XYZ";
+        pj.CNPJ = "12.345.678/0001-99";
+    }
+}
