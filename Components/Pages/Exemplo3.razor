@@ -1,0 +1,83 @@
+@page "/exemplo3"
+@rendermode InteractiveServer
+
+<h3>Exemplo3: Variáveis</h3>
+<p>Este exemplo demonstra o uso de variáveis em um componente Blazor</p>
+
+<button type="button" class="btn btn-danger" @onclick="IncrementarContador">Aumentar</button>
+
+<h3>Contador: @contador</h3>
+
+@if (estaAtivo)
+{
+    <p>O botão foi clicado!</p>
+}
+else
+{
+    <p>O botão ainda não foi clicado.</p>
+}
+
+<h4>Data de hoje: @dataAtual</h4>
+<h4>Vencimento(PT-BR): @vencimento.ToString("dd/MM/yyyy")</h4>
+
+<h3>@vinicius.Id</h3>
+<h3>@vinicius.Nome</h3>
+<h3>@vinicius.Email</h3>
+<h3>@vinicius.Ativo</h3>
+<br>
+<h3>@maria.Id</h3>
+<h3>@maria.Nome</h3>
+<h3>@maria.Email</h3>
+
+@code {
+    private string mensagem = "Olá, Blazor!";
+    private int contador = 0;
+    private double valorDecimal = 10.5;
+    private bool estaAtivo = false;
+    private char letra = 'A';
+    private DateTime dataAtual = DateTime.Now;
+    private DateTime vencimento = new DateTime(2025, 12, 31);
+    private Cliente vinicius = new Cliente();
+    private Cliente maria = new Cliente(300, "Maria Silva", "maria@gmail.com");
+    private void IncrementarContador()
+    {
+        contador++;
+        estaAtivo = true;
+        vencimento = dataAtual.AddDays(contador);
+
+        vinicius.Id = contador;
+        vinicius.Nome = "Vinicius Ávila";
+        vinicius.Email = "vinicius@gmail.com";
+        vinicius.Ativar();
+
+    }
+
+    private class Cliente
+    {
+        public int Id { get; set; }
+        public string? Nome { get; set; }
+        public string? Email { get; set; }
+
+        public bool Ativo { get; set; } = false;
+
+        public Cliente()
+        { // construtor padrão
+        }
+        public Cliente(string nome, string email)
+        { // construtor com parâmetros
+            Nome = nome;
+            Email = email;
+        }
+        public Cliente(int id, string nome, string email)
+        { // recebe o que for passado como parâmetro
+            Id = id;
+            Nome = nome;
+            Email = email;
+        }
+
+        public void Ativar()
+        {
+            Ativo = true;
+        }
+    }
+}
