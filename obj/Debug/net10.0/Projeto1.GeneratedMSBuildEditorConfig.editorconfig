@@ -38,6 +38,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcTmF2TGluay5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Fatec/Laboratório-de-Desenvolvimento-de-Dispositivos-Móveis-5DSM/blazor9/Projeto1/Components/Pages/Clientes/List.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xDbGllbnRlc1xMaXN0LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Fatec/Laboratório-de-Desenvolvimento-de-Dispositivos-Móveis-5DSM/blazor9/Projeto1/Components/Pages/Counter.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xDb3VudGVyLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 

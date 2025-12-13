@@ -2,6 +2,8 @@ using Projeto1.Components;
 using Microsoft.EntityFrameworkCore;
 using Projeto1.Data;
 using Npgsql.EntityFrameworkCore.PostgreSQL;
+using Projeto1.Interfaces;
+using Projeto1.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,6 +12,9 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseNpgsql(connectionString));
+
+// registrando o repositório de produtos para injeção de dependência
+builder.Services.AddScoped<IClienteRepository, ClienteRepository>();
 
 // Add services to the container.
 builder.Services.AddRazorComponents()

@@ -1,0 +1,48 @@
+@page "/clientes"
+@using Projeto1.Interfaces
+@rendermode InteractiveServer
+
+@inject IClienteRepository _clienteRepository
+
+<h3>Listagem de clientes</h3>
+
+@if (listaClientes == null || listaClientes.Count == 0)
+{
+    <p> Carregando clientes...</p>
+}
+else
+{
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>Telefone</th>
+            </tr>
+        </thead>
+        <tbody>
+            @* para cada item vai trazer id, nome, email e telefone*@
+            @foreach (var item in listaClientes)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.Nome</td>
+                    <td>@item.Email</td>
+                    <td>@item.Telefone</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+@code {
+
+    private List<Cliente> listaClientes = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        // listando todos os clientes para dentro da lista
+        listaClientes = await _clienteRepository.ListarTodosAsync();
+    }
+}
