@@ -14,7 +14,8 @@ namespace Projeto1.Repositories
         }
         public async Task<List<Cliente>> ListarTodosAsync()
         {
-            return await _context.Clientes.ToListAsync();
+            // manter ordenado pelo Id
+            return await _context.Clientes.OrderBy(c => c.Id).ToListAsync();
         }
         public async Task<Cliente?> ObterPorIdAsync(int id)
         {

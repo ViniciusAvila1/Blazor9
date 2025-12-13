@@ -1,0 +1,90 @@
+@page "/clientes/edit/{id:int}"
+@using Projeto1.Interfaces
+@rendermode InteractiveServer
+@inject IClienteRepository _clienteRepository
+@inject NavigationManager _navigationManager
+
+<h3>Editar cliente</h3>
+
+<form>
+    <div class="row">
+        <div class="col-md-6">
+            <label for="nome">Nome</label>
+            <input type="text" id="nome" class="form-control" @bind-value="nome">
+        </div>
+        <div class="col-md-6">
+            <label for="email">Email</label>
+            <input type="email" id="email" class="form-control" @bind-value="email">
+        </div>
+        <div class="col-md-3">
+            <label for="telefone">Telefone</label>
+            <input type="text" id="telefone" class="form-control" @bind-value="telefone">
+        </div>
+    </div>
+
+    <div class="row mt-3">
+        <div class="col-md-2">
+            <button type="button" class="btn btn-primary" @onclick="Atualizar">Atualizar</button>
+        </div>
+        <div class="col-md-2">
+            <button type="button" class="btn btn-dark" @onclick="Voltar">Voltar</button>
+        </div>
+    </div>
+</form>
+
+<p>@mensagem</p>
+
+@code {
+
+    [Parameter]
+    // esse id é o codigo vindo do list por parametro
+    public int id { get; set; }
+
+    private Cliente novoCliente = new();
+
+    private string nome = string.Empty;
+    private string email = string.Empty;
+    private string telefone = string.Empty;
+    private string mensagem = string.Empty;
+
+    protected override async Task OnInitializedAsync()
+    {
+        // carregando o cliente pelo id
+        var result = await _clienteRepository.ObterPorIdAsync(id);
+
+        if (result != null)
+        {
+            novoCliente = result;
+            nome = novoCliente.Nome!;
+            email = novoCliente.Email!;
+            telefone = novoCliente.Telefone!;
+        }
+    }
+    private async Task Atualizar()
+    {
+        if (string.IsNullOrEmpty(nome))
+        {
+            // validação simples
+            return;
+        }
+
+        if (string.IsNullOrEmpty(telefone))
+        {
+            telefone = "00-00000-0000";
+        }
+        mensagem = "salvando...";
+
+        novoCliente.Nome = nome;
+        novoCliente.Email = email;
+        novoCliente.Telefone = telefone;
+
+        await _clienteRepository.AtualizarAsync(novoCliente);
+
+        _navigationManager.NavigateTo("/clientes");
+    }
+
+    private async Task Voltar()
+    {
+        _navigationManager.NavigateTo("/clientes");
+    }
+}
