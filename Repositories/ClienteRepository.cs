@@ -1,6 +1,7 @@
 using Projeto1.Models;
 using Projeto1.Interfaces;
 using Projeto1.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace Projeto1.Repositories
 {
@@ -11,7 +12,7 @@ namespace Projeto1.Repositories
         {
             _context = context;
         }
-        public async Task<IEnumerable<Cliente>> ListarTodosAsync()
+        public async Task<List<Cliente>> ListarTodosAsync()
         {
             return await _context.Clientes.ToListAsync();
         }
