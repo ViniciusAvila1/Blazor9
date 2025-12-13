@@ -5,6 +5,9 @@
 @inject IClienteRepository _clienteRepository
 
 <h3>Listagem de clientes</h3>
+<a href="/clientes/add" class="btn btn-primary">
+    Adicionar
+</a>
 
 @if (listaClientes == null || listaClientes.Count == 0)
 {
@@ -20,6 +23,7 @@ else
                 <th>Nome</th>
                 <th>Email</th>
                 <th>Telefone</th>
+                <th>Ações</th>
             </tr>
         </thead>
         <tbody>
@@ -31,6 +35,14 @@ else
                     <td>@item.Nome</td>
                     <td>@item.Email</td>
                     <td>@item.Telefone</td>
+                    <td>
+                        <a href="/clientes/edit" class="btn btn-sm btn-warning">
+                            Editar
+                        </a>
+                        <a href="/clientes/delete" class="btn btn-sm btn-danger">
+                            Excluir
+                        </a>
+                    </td>
                 </tr>
             }
         </tbody>

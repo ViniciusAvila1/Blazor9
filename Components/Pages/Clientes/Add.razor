@@ -1,0 +1,73 @@
+@page "/clientes/add"
+@using Projeto1.Interfaces
+@rendermode InteractiveServer
+@inject IClienteRepository _clienteRepository
+@inject NavigationManager _navigationManager
+
+<h3>Adicionar cliente</h3>
+
+<form>
+    <div class="row">
+        <div class="col-md-6">
+            <label for="nome">Nome</label>
+            <input type="text" id="nome" class="form-control" @bind-value="nome">
+        </div>
+        <div class="col-md-6">
+            <label for="email">Email</label>
+            <input type="email" id="email" class="form-control" @bind-value="email">
+        </div>
+        <div class="col-md-3">
+            <label for="telefone">Telefone</label>
+            <input type="text" id="telefone" class="form-control" @bind-value="telefone">
+        </div>
+    </div>
+
+    <div class="row mt-3">
+        <div class="col-md-2">
+            <button type="button" class="btn btn-primary" @onclick="Salvar">Salvar</button>
+        </div>
+        <div class="col-md-2">
+            <button type="button" class="btn btn-dark" @onclick="Voltar">Voltar</button>
+        </div>
+    </div>
+</form>
+
+<p>@mensagem</p>
+
+@code {
+
+    private Cliente novoCliente = new();
+
+    private string nome = string.Empty;
+    private string email = string.Empty;
+    private string telefone = string.Empty;
+    private string mensagem = string.Empty;
+
+    private async Task Salvar()
+    {
+        if (string.IsNullOrEmpty(nome))
+        {
+            // validação simples
+            return;
+        }
+
+        if (string.IsNullOrEmpty(telefone))
+        {
+            telefone = "00-00000-0000";
+        }
+        mensagem = "salvando...";
+
+        novoCliente.Nome = nome;
+        novoCliente.Email = email;
+        novoCliente.Telefone = telefone;
+
+        await _clienteRepository.IncluirAsync(novoCliente);
+
+        _navigationManager.NavigateTo("/clientes");
+    }
+
+    private async Task Voltar()
+    {
+        _navigationManager.NavigateTo("/clientes");
+    }
+}
