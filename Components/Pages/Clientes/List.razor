@@ -39,9 +39,9 @@ else
                         <a href="/clientes/edit/@item.Id" class="btn btn-sm btn-warning">
                             Editar
                         </a>
-                        <a href="/clientes/delete/@item.Id" class="btn btn-sm btn-danger">
-                            Excluir
-                        </a>
+                        <button type="button" class="btn btn-danger" @onclick="@(() => DeletarCliente(item.Id))">
+                            Deletar
+                        </button>
                     </td>
                 </tr>
             }
@@ -55,6 +55,13 @@ else
     protected override async Task OnInitializedAsync()
     {
         // listando todos os clientes para dentro da lista
+        listaClientes = await _clienteRepository.ListarTodosAsync();
+    }
+
+    private async Task DeletarCliente(int id)
+    {
+        await _clienteRepository.ExcluirAsync(id);
+        // recarregar a lista
         listaClientes = await _clienteRepository.ListarTodosAsync();
     }
 }
