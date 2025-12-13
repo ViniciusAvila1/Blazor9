@@ -1,5 +1,7 @@
 using Projeto1.Models;
 using Projeto1.Interfaces;
+using Projeto1.Data;
+
 namespace Projeto1.Repositories
 {
     public class ClienteRepository : IClienteRepository
